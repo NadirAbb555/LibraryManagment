@@ -1,0 +1,13 @@
+﻿@model MVCLibaryApp.Models.Entity.TBLPERSONAL
+@{
+    ViewBag.Title = "AddPersonal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("AddPersonal", "Personal", FormMethod.Post))
+{
+    <label>Personal</label>
+    @Html.TextBoxFor(m => m.PERSONAL, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.PERSONAL, "", new { @style = "color:red" })
+    <br />
+    <button class="btn btn-primary">Add</button>
+}

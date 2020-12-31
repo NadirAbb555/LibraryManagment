@@ -1,0 +1,25 @@
+﻿@model MVCLibaryApp.Models.Entity.TBLWRITER
+@{
+    ViewBag.Title = "ChangeWriter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateWriter", "Writer", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.ID, new { @class = "form-control" })
+
+    <label>Name</label>
+    <br />
+    @Html.TextBoxFor(m => m.NAME, new { @class = "form-control" })
+    <br />
+    <label>Surname</label>
+    <br />
+    @Html.TextBoxFor(m => m.SURNAME, new { @class = "form-control" })
+    <br />
+    <label>About</label>
+    <br />
+    @Html.TextAreaFor(m => m.ABOUT, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Update</button>
+
+}

@@ -1,0 +1,29 @@
+﻿@using MVCLibaryApp.Models.Entity
+@model List<TBLMESSAGE>
+@{
+    ViewBag.Title = "Inbox";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+<h2>Inbox</h2>
+
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>Göndərən</th>
+        <th>Mövzu</th>
+        <th>Mesaj</th>
+        <th>Tarix</th>
+        <th>Əməliyyat</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.SENDER</td>
+            <td>@x.SUBJECT</td>
+            <td>@x.MESSAGE</td>
+            <td>@Convert.ToDateTime(x.DATE).ToString("dd/MM/yyyy HH:mm")</td>
+        </tr>
+}
+</table>

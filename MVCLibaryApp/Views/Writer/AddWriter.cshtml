@@ -1,0 +1,27 @@
+﻿@model MVCLibaryApp.Models.Entity.TBLWRITER
+@{
+    ViewBag.Title = "AddWriter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddWriter","Writer",FormMethod.Post))
+{
+    <div></div>
+    <div style="margin-top:15px" >
+        <label>Name</label>
+        @Html.TextBoxFor(m => m.NAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.NAME, "", new { @style = "color:red" })
+        <br />
+        <label>Surname</label>
+        @Html.TextBoxFor(m => m.SURNAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.SURNAME, "", new { @style = "color:red" })
+        <br />
+        <label>About</label>
+        @Html.TextAreaFor(m => m.ABOUT, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ABOUT, "", new { @style = "color:red" })
+        <br />
+        <button class="btn btn-primary">Add</button>
+    </div>
+
+}
+

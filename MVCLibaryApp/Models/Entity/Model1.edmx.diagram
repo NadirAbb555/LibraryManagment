@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="37682a84823b41a3831432b7c4ff71ee" Name="Diagram1">
+        <EntityTypeShape EntityType="DBKITABXANAModel.TBLACTION" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBKITABXANAModel.TBLBOOK" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBKITABXANAModel.TBLCASH" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBKITABXANAModel.TBLCATEGORY" Width="1.5" PointX="1.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBKITABXANAModel.TBLFINE" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBKITABXANAModel.TBLMEMBERS" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBKITABXANAModel.TBLPERSONAL" Width="1.5" PointX="0.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBKITABXANAModel.TBLWRITER" Width="1.5" PointX="1.5" PointY="14.5" IsExpanded="true" />
+        <AssociationConnector Association="DBKITABXANAModel.FK_TBLACTION_TBLBOOK" ManuallyRouted="false" />
+        <AssociationConnector Association="DBKITABXANAModel.FK_TBLACTION_TBLMEMBERS" ManuallyRouted="false" />
+        <AssociationConnector Association="DBKITABXANAModel.FK_TBLACTION_TBLPERSONAL" ManuallyRouted="false" />
+        <AssociationConnector Association="DBKITABXANAModel.FK_TBLFINE_TBLACTION" ManuallyRouted="false" />
+        <AssociationConnector Association="DBKITABXANAModel.FK_TBLBOOK_TBLCATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="DBKITABXANAModel.FK_TBLBOOK_TBLWRITER" ManuallyRouted="false" />
+        <AssociationConnector Association="DBKITABXANAModel.FK_TBLFINE_TBLMEMBERS" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DBKITABXANAModel.TBLCONTACT" Width="1.5" PointX="7.625" PointY="2.625" />
+        <EntityTypeShape EntityType="DBKITABXANAModel.TBLSITEABOUT" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DBKITABXANAModel.TBLMESSAGE" Width="1.5" PointX="5.375" PointY="5.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

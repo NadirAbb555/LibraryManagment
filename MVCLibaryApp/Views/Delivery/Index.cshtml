@@ -1,0 +1,35 @@
+﻿@using MVCLibaryApp.Models.Entity
+@model List<TBLACTION>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Return book</h2>
+<table class="table table-bordered" >
+    <tr>
+        <th>#</th>
+        <th>Member</th>
+        <th>Book</th>
+        <th>Personal</th>
+        <th>Delivery date</th>
+        <th>Return date</th>
+        <th>Return book</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.ID</td>
+            <td>@x.TBLMEMBERS.NAME &nbsp; @x.TBLMEMBERS.SURNAME</td>
+            <td>@x.TBLBOOK.NAME</td>
+            <td>@x.TBLPERSONAL.PERSONAL</td>
+            <td>@Convert.ToDateTime(x.DELIVERYDATE).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(x.RETURNDATE).ToString("dd/MM/yyyy")</td>
+            <td>
+                <a href="/Delivery/Return/@x.ID" class="btn btn-primary"style="background-color:#4f2dc4; color:#ffffff">Return book</a>
+            </td>
+
+        </tr>
+    }
+</table>
+

@@ -1,0 +1,42 @@
+﻿@model MVCLibaryApp.Models.Entity.TBLACTION
+@{
+    ViewBag.Title = "Return";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Return book</h2>
+
+@using (Html.BeginForm("UpdateRetToDelivery", "Delivery", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.ID, new { @class = "form-control" })
+
+    <label>Book</label>
+    @Html.TextBoxFor(m => m.TBLBOOK.NAME, new { @class = "form-control" })
+    <br />
+
+    <label>Member</label>
+    @Html.TextBoxFor(m => m.TBLMEMBERS.NAME, new { @class = "form-control" })
+    <br />
+
+    <label> Personal </label>
+    @Html.TextBoxFor(m => m.TBLPERSONAL.PERSONAL, new { @class = "form-control" })
+    <br />
+
+    <label>Delivery date</label>
+    @Html.TextBoxFor(m => m.DELIVERYDATE, "{0: dd.MM.yyyy}", new { @class = "form-control" })
+    <br />
+
+    <label>End date</label>
+    @Html.TextBoxFor(m => m.RETURNDATE, "{0: dd.MM.yyyy}", new { @class = "form-control" })
+    <br />
+
+    <label>Return date now</label>
+    <input type="text" name="RETURNNOW" class="form-control" value="@DateTime.Now.ToShortDateString()" />
+    <br />
+
+    <label>Total fine to date</label>
+    <input type="text" name="fine" class="form-control" id="fine" value="@ViewBag.fine" />
+    <br />
+    <button class="btn btn-primary" style="background-color:#07f7a6; color:#ffffff">Return now</button>
+}
+

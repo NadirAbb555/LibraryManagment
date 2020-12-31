@@ -1,0 +1,26 @@
+﻿@model  MVCLibaryApp.Models.Entity.TBLACTION
+@{
+    ViewBag.Title = "DeliveryAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("DeliveryAdd", "Delivery", FormMethod.Post))
+{
+    <label>Book</label>
+    @Html.TextBoxFor(m => m.BOOK, new { @class = "form-control" })
+    <br />
+    <label>Member</label>
+    @Html.TextBoxFor(m => m.MEMBER, new { @class = "form-control" })
+    <br />
+    <label>Personal</label>
+    @Html.TextBoxFor(m => m.PERSONAL, new { @class = "form-control" })
+    <br />
+    <label>Delivery date</label>
+    <input type="text" name="DELIVERYDATE" class = "form-control" value="@DateTime.Now.ToShortDateString()" />
+    <br />
+    <label>Return date</label>
+    <input type="text" name="RETURNDATE" class = "form-control" value="@DateTime.Now.AddDays(7).ToShortDateString()" />
+    <br />
+    <button class="btn btn-primary" style="background-color:#07f7a6; color:#ffffff">Delivery now</button>
+}
+

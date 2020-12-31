@@ -1,0 +1,23 @@
+﻿@model MVCLibaryApp.Models.Entity.TBLMESSAGE
+@{
+    ViewBag.Title = "Send";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+<h2>Send</h2>
+
+@using (Html.BeginForm("Send", "Message", FormMethod.Post))
+{
+    <div class="container">
+        <label >Kimə</label>
+        @Html.TextBoxFor(m=>m.RECEIVER, new { @class = "form-control"})
+        <br />
+        <label>Mövzu</label>
+        @Html.TextBoxFor(m=>m.SUBJECT, new { @class = "form-control"})
+        <br />
+        <label>Mesaj</label>
+        @Html.TextAreaFor(m=>m.MESSAGE, new { @class = "form-control"})
+        <br />
+        <button class="btn btn-app" style="background-color:#ff00dc; color:white">Göndər</button>
+    </div>
+}

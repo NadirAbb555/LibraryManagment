@@ -1,0 +1,92 @@
+﻿@using MVCLibaryApp.Models.Entity
+@model List<TBLBOOK>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Books</h2>
+<br />
+<br />
+<div >
+    <table id="tbl1" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Writer</th>
+                <th>Date</th>
+                <th>Publishing</th>
+                <th>Pages</th>
+                <th>Book status</th>
+                <th>Stock</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        @foreach (var x in Model)
+        {
+            if (x.BOOKSTATUS == false)
+            {
+                <tr style="color:red; font-size:12px">
+
+
+                    <td><b>@x.ID</b></td>
+                    <td><b>@x.NAME</b></td>
+                    <td><b>@x.TBLCATEGORY.NAME</b></td>
+                    <td><b>@x.TBLWRITER.NAME &nbsp; @x.TBLWRITER.SURNAME </b></td>
+                    <td><b>@x.DATE</b></td>
+                    <td><b>@x.PUBLISHING</b></td>
+                    <td><b>@x.PAGES</b></td>
+                    <td><b>@x.BOOKSTATUS</b></td>
+                    <td><b>@x.STOCK</b></td>
+                    <td>
+                        <a href="/Book/ChangeBook/@x.ID" class="btn btn-success">Update</a>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteBook", new { id = x.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want to delete?')" })
+                    </td>
+
+                </tr>
+            }
+            else if (x.BOOKSTATUS == true)
+            {
+                <tr style="color: black; font-size: 13px; width: 200px
+">
+
+                    <td>@x.ID</td>
+                    <td>@x.NAME</td>
+                    <td>@x.TBLCATEGORY.NAME</td>
+                    <td>@x.TBLWRITER.NAME &nbsp; @x.TBLWRITER.SURNAME</td>
+                    <td>@x.DATE</td>
+                    <td>@x.PUBLISHING</td>
+                    <td>@x.PAGES</td>
+                    <td>@x.BOOKSTATUS</td>
+                    <td>@x.STOCK</td>
+                    <td>
+                        <a href="/Book/ChangeBook/@x.ID" class="btn btn-success">Update</a>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteBook", new { id = x.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want to delete?')" })
+                    </td>
+
+                </tr>
+            }
+        }
+    </table>
+</div>
+<a href="/Book/AddBook" class="btn btn-primary">Add book</a>
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>

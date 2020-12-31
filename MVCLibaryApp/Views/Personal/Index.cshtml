@@ -1,0 +1,33 @@
+﻿@using MVCLibaryApp.Models.Entity
+@model List<TBLPERSONAL>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Personal</h2>
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th style="font-size:20px">#</th>
+        <th style="font-size:20px">Personal</th>
+        <th style="font-size:20px">Update</th>
+        <th style="font-size:20px">Delete</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td style="font-size:15px">@x.ID</td>
+            <td style="font-size:15px">@x.PERSONAL</td>
+            <td style="font-size:15px">
+                <a href="/Personal/ChangePersonal/@x.ID" class="btn btn-success">Update</a>
+            </td>
+            <td style="font-size:15px">
+                @Html.ActionLink("Delete", "DeletePersonal",new { id = x.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want to delete?')" })
+            </td>
+        </tr>
+    }
+</table>
+<a href="/Personal/AddPersonal" class="btn btn-primary">Add new personal</a>
+

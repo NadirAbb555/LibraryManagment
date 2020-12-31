@@ -1,0 +1,32 @@
+﻿@model MVCLibaryApp.Models.Entity.TBLBOOK
+@{
+    ViewBag.Title = "AddBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddBook", "Book", FormMethod.Post))
+{
+    <label>Name</label>
+    @Html.TextBoxFor(m => m.NAME, new { @class = "form-control" })
+    <br />
+    <label>Category</label>
+    @Html.DropDownListFor(m => m.TBLCATEGORY.ID, (List<SelectListItem>)ViewBag.cat, new { @class = "form-control" })
+    <br />
+    <label>Writer</label>
+    @Html.DropDownListFor(m => m.TBLWRITER.ID, (List<SelectListItem>)ViewBag.writer, new { @class = "form-control" })
+    <br />
+    <label>Date</label>
+    @Html.TextBoxFor(m => m.DATE, new { @class = "form-control" })
+    <br />
+    <label>Publishing</label>
+    @Html.TextBoxFor(m => m.PUBLISHING, new { @class = "form-control" })
+    <br />
+    <label>Page</label>
+    @Html.TextBoxFor(m => m.PAGES, new { @class = "form-control" })
+    <br />
+    <label>Photo</label>
+    @Html.TextBoxFor(m => m.PHOTO, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Add</button>
+}
+

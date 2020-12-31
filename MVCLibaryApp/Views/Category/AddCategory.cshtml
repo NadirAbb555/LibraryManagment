@@ -1,0 +1,16 @@
+﻿@model  MVCLibaryApp.Models.Entity.TBLCATEGORY
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddCategory", "Category", FormMethod.Post))
+{
+    <label>Category name</label>
+    <br />
+    @Html.TextBoxFor(m => m.NAME, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.NAME, "", new { @style = "color:red" })
+    <br />
+    <button class="btn btn-primary">Add</button>
+}
+

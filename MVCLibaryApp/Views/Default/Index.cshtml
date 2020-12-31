@@ -1,0 +1,23 @@
+﻿@using MVCLibaryApp.Models.Entity
+@model List<TBLCATEGORY>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        @foreach (var x in Model)
+        {
+            <label><a href="/Default/ViewCat/@x.ID" class="text text-black-50">@x.NAME</a></label>
+            <br />
+        }
+    </div>
+</body>
+</html>

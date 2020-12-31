@@ -1,0 +1,60 @@
+﻿@using MVCLibaryApp.Models.Entity
+@model List<TBLFINE>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<br />
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+
+            <th>#</th>
+            <th>Member</th>
+            <th>Fines</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+
+    @foreach (var x in Model)
+    {
+        if (x.FINE < 0)
+        {
+            <tr style="color:red">
+                <td>@x.ID</td>
+                <td>@x.TBLMEMBERS.NAME &nbsp; @x.TBLMEMBERS.SURNAME</td>
+                <td>@x.FINE</td>
+                <td>@x.TBLACTION.RETURNNOW</td>
+
+            </tr>
+        }
+        else if (x.FINE >= 0)
+        {
+            <tr style="color:#0e085a">
+                <td>@x.ID</td>
+                <td>@x.TBLMEMBERS.NAME &nbsp; @x.TBLMEMBERS.SURNAME</td>
+                <td>@x.FINE</td>
+                <td>@x.TBLACTION.RETURNNOW</td>
+
+            </tr>
+
+        }
+    }
+</table>
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>

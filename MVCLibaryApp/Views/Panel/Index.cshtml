@@ -1,0 +1,84 @@
+﻿@model MVCLibaryApp.Models.Entity.TBLMEMBERS
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+<link href="~/webpanel/css/image_popup.css" rel="stylesheet" />
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.0/jquery.fancybox.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.0/jquery.fancybox.min.js"></script> 
+
+@using (Html.BeginForm("Index", "Panel", FormMethod.Post))
+{
+
+    <table class="table table-hover">
+
+        <tr>
+            <th>
+                <label style="font-weight: bolder; color:red">Mail: </label>
+            </th>
+            <td>
+                <label>  @HttpContext.Current.User.Identity.Name</label>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label style="font-weight: bolder; color:red">Ad: </label>
+            </th>
+            <td>
+                @Html.DisplayFor(x => x.NAME)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label style="font-weight: bolder; color:red">Soyad: </label>
+            </th>
+            <td>
+                @Html.DisplayFor(x => x.SURNAME)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label style="font-weight: bolder; color:red">Şifrə: </label>
+            </th>
+            <td>
+                @Html.TextBoxFor(x => x.PASSWORD, new { @class = "form-control", style = "font-weight: bolder" })
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label style="font-weight: bolder; color:red">Mobil: </label>
+            </th>
+            <td>
+                @Html.TextBoxFor(x => x.MOB, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label style="font-weight: bolder; color:red">Təsil: </label>
+            </th>
+            <td>
+                @Html.TextBoxFor(x => x.SCHOOL, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label style="font-weight: bolder; color:red">Şəkil linki: </label>
+            </th>
+            <td>
+                @Html.TextBoxFor(x => x.FOTO, new { @class = "form-control" })
+            </td>
+            <td>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.0/jquery.fancybox.min.css">
+                <a data-fancybox="gallery"style="background-color:red; color:white" target="_blank" class="btn btn-sm" href="@Html.DisplayFor(x=>x.FOTO)">Şəkilə bax</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-warning">Dəyiş</button>
+            </td>
+        </tr>
+    </table>
+}
+

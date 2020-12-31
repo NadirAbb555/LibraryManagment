@@ -1,0 +1,35 @@
+﻿@model MVCLibaryApp.Models.Entity.TBLMEMBERS
+@{
+    ViewBag.Title = "AddMember";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddMember", "Member", FormMethod.Post))
+{
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Name</label>
+        @Html.TextBoxFor(m => m.NAME, new { @class = "form-control" })      
+        <br />
+        <label>Surname</label>
+        @Html.TextBoxFor(m => m.SURNAME, new { @class = "form-control" })
+        <br />
+        <label>Mail</label>
+        @Html.TextBoxFor(m => m.MAIL, new { @class = "form-control" })
+        <br />
+        <label>Mobile</label>
+        @Html.TextBoxFor(m => m.MOB, new { @class = "form-control" })
+        <br />
+        <label>School</label>
+        @Html.TextBoxFor(m => m.SCHOOL, new { @class = "form-control" })
+        <br />
+        <label>Username</label>
+        @Html.TextBoxFor(m => m.USERNAME, new { @class = "form-control" })
+        <br />
+        <label>Password</label>
+        @Html.TextBoxFor(m => m.PASSWORD, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary">Add</button>
+    </div>
+
+}

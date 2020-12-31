@@ -1,0 +1,23 @@
+﻿@using MVCLibaryApp.Models.Entity
+@model List<TBLBOOK>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewCat</title>
+</head>
+<body>
+    <div>
+        @foreach (var x in Model)
+        {
+            <label>@x.NAME</label>
+            <br />
+        }
+    </div>
+</body>
+</html>

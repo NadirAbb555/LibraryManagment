@@ -1,0 +1,49 @@
+﻿@using MVCLibaryApp.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLCATEGORY>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Category", FormMethod.Get))
+{
+    <div style="margin-top:15px">
+        <b>Seach category  </b>   @Html.TextBox("p")
+        <input type="submit" value="Search" />
+        <a href="/Category/Index" class="btn btn-warning">Reset</a>
+    </div>
+    <br />
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th style="font-size:20px">#</th>
+        <th style="font-size:20px">Name</th>
+        <th style="font-size:20px">Update</th>
+        <th style="font-size:20px">Delete</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+
+        <tr>
+            <td><b style="font-size:15px">@x.ID</b></td>
+            <td><b style="font-size:15px">@x.NAME</b></td>
+            <td>
+                <a href="/Category/ChangeCategory/@x.ID" class="btn btn-success">Update</a>
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteCategory", new { id = x.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want to delete?')" })
+            </td>
+        </tr>
+    }
+</table>
+
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page}))
+
+<a href="/Category/AddCategory" class="btn btn-primary">Add new category</a>
+
+
+
+

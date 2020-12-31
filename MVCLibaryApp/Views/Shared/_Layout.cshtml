@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "_Layout";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 190px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #03032c;
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+
+            .sidebar a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #93764c;
+                display: block;
+            }
+
+                .sidebar a:hover {
+                    color: #ffd800;
+                }
+
+        .main {
+            margin-left: 190px; /* Same as the width of the sidenav */
+            padding: 0px 10px;
+        }
+
+        @@media screen and (max-height: 450px) {
+            .sidebar {
+                padding-top: 15px;
+            }
+
+                .sidebar a {
+                    font-size: 18px;
+                }
+        }
+    </style>
+</head>
+<body style="background-color:#a97a7a">
+
+    <div class="sidebar">
+
+        <a href="#" style="margin-left:2px; font-size:17px"><i class="fa fa-fw fa-home" style="font-size:17px"></i>Home</a>
+
+        <a href="/Category/Index" style="margin-left:7px; font-size:17px"><i class="fa fa-bookmark-o" style="font-size:17px"></i> Categories</a>
+
+        <a href="/Book/Index" style="margin-left:4.5px; font-size:17px"><i class="fa fa-book" style="font-size:17px"></i> Books</a>
+
+        <a href="/Writer/Index" style="margin-left:5.5px; font-size:17px"><i class="fa fa-pencil" style="font-size:17px"></i>  Writers</a>
+
+        <a href="/Member/Index" style="margin-left:5px; font-size:17px"><i class="fa fa-mortar-board" style="font-size:17px"></i>Members</a>
+
+        <a href="/Personal/Index" style="font-size: 17px"><i class="fa fa-fw fa-user" style="font-size:17px"></i> Employees</a>
+
+        <a href="/Delivery/DeliveryAdd" style="margin-left:4px; font-size:17px"><i class="fa fa-cloud-upload" style="font-size:17px"></i> Delivery books</a>
+
+        <a href="/Delivery/Index" style="margin-left:4px; font-size:17px"><i class="fa fa-cloud-download" style="font-size:17px"></i> Return books</a>
+
+        <a href="/Delivery/History" style="margin-left:4px; font-size:17px"><i class="fa fa-history" style="font-size:17px"></i> History</a>
+
+        <a href="/Dashboard/Index" style="margin-left:4px; font-size:17px"><i class="fa fa-tachometer" style="font-size:17px"></i> Dashboard</a>
+
+        <a href="/Dashboard/WeatherWidget" style="margin-left:4.3px; font-size:17px"><i class="fa fa-cloud" style="font-size:17px"></i>&nbsp; Weather</a>
+
+        <a href="/Dashboard/Galery" style="margin-left:4.3px; font-size:17px"><i class="fa fa-fw" style="font-size:17px"></i>&nbsp; Galery</a>
+
+        <a href="/Cash/Index" style="margin-left:4.3px; font-size:17px"><i class="fa fa-bank" style="font-size:17px"></i>&nbsp; Cash</a>
+
+        <a href="#" style="margin-left:4.3px; font-size:17px"><i class="fa fa-gear" style="font-size:17px"></i>&nbsp; Settings</a>
+
+        <a href="#" style="margin-left:8px; font-size:17px"><i class="fa fa-rss" style="font-size:17px"></i>&nbsp; Help</a>
+
+        <a href="#" style="margin-left:8px; font-size:17px"><i class="fa fa-sign-out" style="font-size:17px"></i>&nbsp; Sign out</a>
+
+    </div>
+    WeatherWidget
+
+    <div class="main">
+        @RenderBody()
+    </div>
+</body>
+</html>
+
