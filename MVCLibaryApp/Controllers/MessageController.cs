@@ -38,6 +38,7 @@ namespace MVCLibaryApp.Controllers
 
             if (m.RECEIVER == dbMail.MAIL)
             {
+                m.READMSG = false;
                 m.SENDER = inbox.ToString();
                 m.DATE = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
                 db.TBLMESSAGE.Add(m);
@@ -48,6 +49,13 @@ namespace MVCLibaryApp.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult Read(TBLMESSAGE m)
+        {
+            var readMsgId = db.TBLMESSAGE.Find(m.ID);
+            readMsgId.READMSG = true;
+            db.SaveChanges();
+            return RedirectToAction("Inbox","Message");
         }
 
     }

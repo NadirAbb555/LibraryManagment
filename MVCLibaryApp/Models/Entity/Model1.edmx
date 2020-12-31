@@ -84,7 +84,7 @@
           <Property Name="PASSWORD" Type="varchar" MaxLength="20" />
           <Property Name="FOTO" Type="varchar" MaxLength="250" />
           <Property Name="MOB" Type="varchar" MaxLength="25" />
-          <Property Name="SCHOOL" Type="varchar" MaxLength="100" />
+          <Property Name="SCHOOL" Type="nvarchar" MaxLength="50" />
           <Property Name="SD" Type="bit" />
           <Property Name="CONFIRMATION" Type="bit" />
         </EntityType>
@@ -98,6 +98,7 @@
           <Property Name="SUBJECT" Type="nvarchar" MaxLength="50" />
           <Property Name="MESSAGE" Type="nvarchar" MaxLength="500" />
           <Property Name="DATE" Type="smalldatetime" />
+          <Property Name="READMSG" Type="bit" />
         </EntityType>
         <EntityType Name="TBLPERSONAL">
           <Key>
@@ -336,7 +337,7 @@
           <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="FOTO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="MOB" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="SCHOOL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SD" Type="Boolean" />
           <NavigationProperty Name="TBLACTION" Relationship="Self.FK_TBLACTION_TBLMEMBERS" FromRole="TBLMEMBERS" ToRole="TBLACTION" />
           <NavigationProperty Name="TBLFINE" Relationship="Self.FK_TBLFINE_TBLMEMBERS" FromRole="TBLMEMBERS" ToRole="TBLFINE" />
@@ -518,6 +519,7 @@
           <Property Name="SUBJECT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MESSAGE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="DATE" Type="DateTime" Precision="0" />
+          <Property Name="READMSG" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -650,6 +652,7 @@
           <EntitySetMapping Name="TBLMESSAGE">
             <EntityTypeMapping TypeName="DBKITABXANAModel.TBLMESSAGE">
               <MappingFragment StoreEntitySet="TBLMESSAGE">
+                <ScalarProperty Name="READMSG" ColumnName="READMSG" />
                 <ScalarProperty Name="DATE" ColumnName="DATE" />
                 <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
                 <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />

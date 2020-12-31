@@ -15,15 +15,29 @@
         <th>Mövzu</th>
         <th>Mesaj</th>
         <th>Tarix</th>
-        <th>Əməliyyat</th>
+        <th>Status</th>
     </tr>
     @foreach (var x in Model)
     {
-        <tr>
-            <td>@x.SENDER</td>
-            <td>@x.SUBJECT</td>
-            <td>@x.MESSAGE</td>
-            <td>@Convert.ToDateTime(x.DATE).ToString("dd/MM/yyyy HH:mm")</td>
-        </tr>
-}
+        if (x.READMSG == false)
+        {
+            <tr style="color:red">
+                <td>@x.SENDER</td>
+                <td>@x.SUBJECT</td>
+                <td>@x.MESSAGE</td>
+                <td>@Convert.ToDateTime(x.DATE).ToString("dd/MM/yyyy HH:mm")</td>
+                <td><a href="/Message/Read/@x.ID">Oxunmus kimi qeyd et</a></td>
+            </tr>
+        }
+        else if (x.READMSG == true)
+        {
+            <tr style="color:#2f2d2d">
+                <td>@x.SENDER</td>
+                <td>@x.SUBJECT</td>
+                <td>@x.MESSAGE</td>
+                <td>@Convert.ToDateTime(x.DATE).ToString("dd/MM/yyyy HH:mm")</td>
+                <td><label style="color:black; font-weight:bolder">Oxunub</label></td>
+            </tr>
+        }
+    }
 </table>
