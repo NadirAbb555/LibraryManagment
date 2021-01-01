@@ -24,6 +24,7 @@ namespace MVCLibaryApp.Controllers
             if (login != null)
             {
                 FormsAuthentication.SetAuthCookie(login.MAIL, false);
+            
                 Session["mail"] = login.MAIL.ToString();
                 sess = login.MAIL.ToString();
                 //TempData["id"] = login.ID.ToString();

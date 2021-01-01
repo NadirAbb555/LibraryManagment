@@ -21,5 +21,7 @@ namespace MVCLibaryApp.Models.Entity
         public string MESSAGE { get; set; }
         public Nullable<System.DateTime> DATE { get; set; }
         public Nullable<bool> READMSG { get; set; }
+        public Nullable<bool> STSENDER { get; set; }
+        public Nullable<bool> STRECEIVER { get; set; }
     }
 }

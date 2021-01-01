@@ -13,9 +13,20 @@ namespace MVCLibaryApp.Controllers
         DBKITABXANAEntities db = new DBKITABXANAEntities();
         public ActionResult Inbox()
         {
-            var inbox = (string)Session["mail"].ToString();
-            var msg = db.TBLMESSAGE.Where(x => x.RECEIVER == inbox.ToString()).ToList();
-            return View(msg);
+            try
+            {
+                var inbox = (string)Session["mail"].ToString();
+                var msg = (from m in db.TBLMESSAGE.Where(x => x.RECEIVER == inbox.ToString()).ToList()
+                           orderby m.ID descending
+                           select m).ToList();
+                return View(msg);
+            }
+            catch (Exception)
+            {
+             
+                return RedirectPermanent("~/Login/Login");
+
+            }
         }
         public ActionResult Sent()
         {
@@ -39,6 +50,7 @@ namespace MVCLibaryApp.Controllers
             if (m.RECEIVER == dbMail.MAIL)
             {
                 m.READMSG = false;
+                
                 m.SENDER = inbox.ToString();
                 m.DATE = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
                 db.TBLMESSAGE.Add(m);
@@ -55,7 +67,13 @@ namespace MVCLibaryApp.Controllers
             var readMsgId = db.TBLMESSAGE.Find(m.ID);
             readMsgId.READMSG = true;
             db.SaveChanges();
-            return RedirectToAction("Inbox","Message");
+            return RedirectToAction("Inbox", "Message");
+        }
+        public ActionResult Delete(TBLMESSAGE m)
+        {
+            var inbox = (string)Session["mail"].ToString();
+            var dbMail = db.TBLMEMBERS.Where(x => x.MAIL == m.RECEIVER).FirstOrDefault();
+            dbMail.
         }
 
     }

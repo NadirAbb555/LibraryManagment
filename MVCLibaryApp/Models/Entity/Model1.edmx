@@ -99,6 +99,8 @@
           <Property Name="MESSAGE" Type="nvarchar" MaxLength="500" />
           <Property Name="DATE" Type="smalldatetime" />
           <Property Name="READMSG" Type="bit" />
+          <Property Name="STSENDER" Type="bit" />
+          <Property Name="STRECEIVER" Type="bit" />
         </EntityType>
         <EntityType Name="TBLPERSONAL">
           <Key>
@@ -520,6 +522,8 @@
           <Property Name="MESSAGE" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="DATE" Type="DateTime" Precision="0" />
           <Property Name="READMSG" Type="Boolean" />
+          <Property Name="STSENDER" Type="Boolean" />
+          <Property Name="STRECEIVER" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -652,6 +656,8 @@
           <EntitySetMapping Name="TBLMESSAGE">
             <EntityTypeMapping TypeName="DBKITABXANAModel.TBLMESSAGE">
               <MappingFragment StoreEntitySet="TBLMESSAGE">
+                <ScalarProperty Name="STRECEIVER" ColumnName="STRECEIVER" />
+                <ScalarProperty Name="STSENDER" ColumnName="STSENDER" />
                 <ScalarProperty Name="READMSG" ColumnName="READMSG" />
                 <ScalarProperty Name="DATE" ColumnName="DATE" />
                 <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
