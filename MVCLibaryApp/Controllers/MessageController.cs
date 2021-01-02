@@ -16,7 +16,7 @@ namespace MVCLibaryApp.Controllers
             try
             {
                 var inbox = (string)Session["mail"].ToString();
-                var msg = (from m in db.TBLMESSAGE.Where(x => x.RECEIVER == inbox.ToString()).ToList()
+                var msg = (from m in db.TBLMESSAGE.Where(x => x.RECEIVER == inbox.ToString() && x.STRECEIVER == false).ToList()
                            orderby m.ID descending
                            select m).ToList();
                 return View(msg);
@@ -31,7 +31,7 @@ namespace MVCLibaryApp.Controllers
         public ActionResult Sent()
         {
             var inbox = (string)Session["mail"].ToString();
-            var msg = db.TBLMESSAGE.Where(x => x.SENDER == inbox.ToString()).ToList();
+            var msg = db.TBLMESSAGE.Where(x => x.SENDER == inbox.ToString() && x.STSENDER == false).ToList();
             return View(msg);
         }
 
@@ -49,8 +49,7 @@ namespace MVCLibaryApp.Controllers
 
             if (m.RECEIVER == dbMail.MAIL)
             {
-                m.READMSG = false;
-                
+                m.READMSG = false;                
                 m.SENDER = inbox.ToString();
                 m.DATE = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
                 db.TBLMESSAGE.Add(m);
@@ -69,11 +68,20 @@ namespace MVCLibaryApp.Controllers
             db.SaveChanges();
             return RedirectToAction("Inbox", "Message");
         }
-        public ActionResult Delete(TBLMESSAGE m)
+        public ActionResult DeleteInbox(TBLMESSAGE m)
         {
-            var inbox = (string)Session["mail"].ToString();
-            var dbMail = db.TBLMEMBERS.Where(x => x.MAIL == m.RECEIVER).FirstOrDefault();
-            dbMail.
+            var delMSG = db.TBLMESSAGE.Find(m.ID);
+            delMSG.STRECEIVER = true;
+            db.SaveChanges();
+            return RedirectToAction("Inbox", "Message");
+        }
+
+        public ActionResult DeleteSent(TBLMESSAGE m)
+        {
+            var delMSG = db.TBLMESSAGE.Find(m.ID);
+            delMSG.STSENDER = true;
+            db.SaveChanges();
+            return RedirectToAction("Inbox", "Message");
         }
 
     }

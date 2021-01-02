@@ -32,5 +32,12 @@ namespace MVCLibaryApp.Controllers
           
             return RedirectToAction("Index", "Panel");
         }
+        RegisterController rc = new RegisterController();
+        public ActionResult ConfirmAccaunt(TBLMEMBERS m)
+        {
+            rc.BuildEmailTemplate(m.ID);
+            m.CONFIRMATION = true;
+            return View();
+        }
     }
 }

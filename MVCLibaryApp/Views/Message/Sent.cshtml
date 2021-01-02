@@ -21,10 +21,14 @@
     {
         
 <tr>
+
     <td>@x.RECEIVER</td>
     <td>@x.SUBJECT</td>
     <td>@x.MESSAGE</td>
     <td>@Convert.ToDateTime(x.DATE).ToString("dd/MM/yyyy HH:mm")</td>
+    <td>
+        @Html.ActionLink("Delete", "DeleteSent", new { id = x.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Slmek istediyinize eminsinizmi?')" })
+    </td>
 </tr>
 }
 </table>
