@@ -12,7 +12,7 @@ namespace MVCLibaryApp.Controllers
         DBKITABXANAEntities db = new DBKITABXANAEntities();
         public ActionResult Index()
         {
-            var fines = (from f in db.TBLFINE.ToList()
+            var fines = (from f in db.TBLFINE.Where(x=>x.FINE > 0).ToList()
                          orderby f.ID descending
                          select f).ToList();
             return View(fines);

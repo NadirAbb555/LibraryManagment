@@ -5,8 +5,19 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<head>
+    <script type="text/javascript">
+        (function titleScroller(text) {
+            document.title = text;
+            setTimeout(function () {
+                titleScroller(text.substr(1) + text.substr(0, 1));
+            }, 500);
+        }("Members"));
+    </script>
+    <title id="titleScroller"></title>
 
-
+</head>
+<br />
 <h2 style="margin-top:10px">Members</h2>
 <br />
 <div class="form-group">
@@ -17,29 +28,34 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Surname</th>
-                <th>Mail</th>
-                <th>Mobile</th>
-                <th>School</th>
-                <th>Username</th>
-                <th>Password</th>
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
         </thead>
         @foreach (var x in Model)
         {
-    <tr>
-        <td>@x.ID</td>
-        <td>@x.NAME</td>
-        <td>@x.SURNAME</td>
-        <td>@x.MOB</td>
-        <td>@x.MAIL</td>
-        <td>@x.SCHOOL</td>
-        <td>@x.USERNAME</td>
-        <td>@x.PASSWORD</td>
-        <td><a href="/Member/ChangeMember/@x.ID" class="btn btn-success">Update</a></td>
-        <td>@Html.ActionLink("Delete", "DeleteMember", new { id = x.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want to delete?')" })</td>
-    </tr>
+            if (x.CONFIRMATION == true)
+            {
+                <tr style="color:black">
+                    <td>@x.ID</td>
+                    <td>@x.NAME</td>
+                    <td>@x.SURNAME</td>
+                    <td><a href="/Member/ChangeMember/@x.ID" class="btn btn-success">Update</a></td>
+                    <td>@Html.ActionLink("Delete", "DeleteMember", new { id = x.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want to delete?')" })</td>
+                    <td><a href="/Member/MemberHistory/@x.ID" class="btn btn-default" style="background-color:white">Member history</a></td>
+                </tr>
+            }
+            else if (x.CONFIRMATION == false)
+            {
+                <tr style="color:#ff0000">
+                    <td>@x.ID</td>
+                    <td>@x.NAME</td>
+                    <td>@x.SURNAME</td>
+                    <td><a href="/Member/ChangeMember/@x.ID" class="btn btn-success">Update</a></td>
+                    <td>@Html.ActionLink("Delete", "DeleteMember", new { id = x.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want to delete?')" })</td>
+                    <td><a href="/Member/MemberHistory/@x.ID" class="btn btn-default" style="background-color:white">Member history</a></td>
+                </tr>
+            }
         }
     </table>
 

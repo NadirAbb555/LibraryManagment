@@ -7,13 +7,13 @@
 @using (Html.BeginForm("DeliveryAdd", "Delivery", FormMethod.Post))
 {
     <label>Book</label>
-    @Html.TextBoxFor(m => m.BOOK, new { @class = "form-control" })
+    @Html.DropDownListFor(x=>x.TBLBOOK.ID, (List<SelectListItem>)ViewBag.book, new { @class = "form-control" })
     <br />
     <label>Member</label>
-    @Html.TextBoxFor(m => m.MEMBER, new { @class = "form-control" })
+    @Html.DropDownListFor(m => m.TBLMEMBERS.ID, (List<SelectListItem>)ViewBag.member, new { @class = "form-control" })
     <br />
     <label>Personal</label>
-    @Html.TextBoxFor(m => m.PERSONAL, new { @class = "form-control" })
+    @Html.DropDownListFor(m => m.TBLPERSONAL.ID, (List<SelectListItem>)ViewBag.personal, new { @class = "form-control" })
     <br />
     <label>Delivery date</label>
     <input type="text" name="DELIVERYDATE" class = "form-control" value="@DateTime.Now.ToShortDateString()" />

@@ -609,6 +609,9 @@
     <Content Include="Views\Message\Send.cshtml" />
     <Content Include="Views\Message\Sent.cshtml" />
     <Content Include="Views\Register\Confirm.cshtml" />
+    <Content Include="Views\Panel\Books.cshtml" />
+    <Content Include="Views\Book\WritersBook.cshtml" />
+    <Content Include="Views\Member\MemberHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

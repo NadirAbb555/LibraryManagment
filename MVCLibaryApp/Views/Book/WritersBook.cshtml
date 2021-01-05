@@ -1,0 +1,42 @@
+﻿@using MVCLibaryApp.Models.Entity
+@model List<TBLBOOK>
+@{
+    ViewBag.Title = "WritersBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <script type="text/javascript">
+        (function titleScroller(text) {
+            document.title = text;
+            setTimeout(function () {
+                titleScroller(text.substr(1) + text.substr(0, 1));
+            }, 500);
+        }(" @ViewBag.writer"));
+    </script>
+    <title id="titleScroller"></title>
+    
+</head>
+
+<body>
+    <h2>@ViewBag.writer</h2>
+    <br />
+    <table class=" table table-striped">
+        <tr>
+            <th>Book</th>
+            <th>Category</th>
+            <th>Publishing</th>
+            <th>Pages</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.NAME</td>
+                <td>@x.TBLCATEGORY.NAME</td>
+                <td>@x.PUBLISHING</td>
+                <td>@x.PAGES</td>
+
+            </tr>
+        }
+    </table>
+
+</body>

@@ -122,7 +122,7 @@ namespace MVCLibaryApp.Controllers
                 client.Host = "smtp.gmail.com";
                 client.Port = 587;
                 client.EnableSsl = true;
-                //client.Timeout = 5000;
+                client.Timeout = 5000;
                 client.UseDefaultCredentials = false;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.Credentials = new System.Net.NetworkCredential("verifieyemail0@gmail.com", "M@$ter555");

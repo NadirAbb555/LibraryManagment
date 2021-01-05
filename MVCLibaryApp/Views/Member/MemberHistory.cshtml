@@ -1,0 +1,47 @@
+﻿@using MVCLibaryApp.Models.Entity
+@model List<TBLACTION>
+@{
+    ViewBag.Title = "MemberHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <script type="text/javascript">
+        (function titleScroller(text) {
+            document.title = text;
+            setTimeout(function () {
+                titleScroller(text.substr(1) + text.substr(0, 1));
+            }, 500);
+        }(" @ViewBag.member"));
+    </script>
+    <title id="titleScroller"></title>
+
+</head>
+<br />
+<<h2 style="margin-top:10px">@ViewBag.member</h2>
+<br />
+
+<div class="form-group">
+
+    <table id="tbl1" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Delivery date</th>
+                <th>Return date</th>
+              
+            </tr>
+        </thead>
+        @foreach (var x in Model)
+        {
+
+            <tr style="color:black">
+                <td>@x.TBLBOOK.NAME</td>
+                <td>@x.DELIVERYDATE</td>
+                <td>@x.RETURNDATE</td>
+            </tr>
+
+        }
+    </table>
+
+</div>

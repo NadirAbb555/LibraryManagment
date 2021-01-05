@@ -7,7 +7,20 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<head>
+    <script type="text/javascript">
+        (function titleScroller(text) {
+            document.title = text;
+            setTimeout(function () {
+                titleScroller(text.substr(1) + text.substr(0, 1));
+            }, 500);
+        }(" Writers"));
+    </script>
+    <title id="titleScroller">
 
+
+    </title>
+</head>
 <h2 style="margin-top:10px">Writers</h2>
 <br />
 <div style="border:medium">
@@ -30,6 +43,7 @@
                 <td><b style="font-size:15px">@x.SURNAME</b></td>
                 <td><a href="/Writer/ChangeWriter/@x.ID" class="btn btn-success">Update</a></td>
                 <td>@Html.ActionLink("Delete", "DeleteWriter", new { id = x.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Do you want to delete?')" })</td>
+                <td><a href="/Book/WritersBook/@x.ID" class="btn btn-default" style="background-color:white; color:black">Writers book</a></td>
             </tr>
         }
     </table>

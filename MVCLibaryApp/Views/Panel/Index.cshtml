@@ -11,41 +11,42 @@
    
 
 <table class="table table-hover">
+    @if (Model.CONFIRMATION == false)
+    {
+    <tr>
+        <td>
+            <a href="/Panel/ConfirmAccaunt/@Model.ID" class="btn btn-sm" style="color:#ff6a00; border-color:red">Mail adresinizi təstiqləyin </a>
+        </td>
+    </tr>
+            }
+        <tr>
+            <th>
+                <label style="font-weight: bolder; color:red">Mail: </label>
+            </th>
 
-    <tr>
-        <th>
-            <label style="font-weight: bolder; color:red">Mail: </label>
-        </th>
-        @if (Model.CONFIRMATION == false)
-        {
+
             <td>
-                <label>  @HttpContext.Current.User.Identity.Name</label> <a href="/Panel/ConfirmAccaunt/@Model.ID" class="btn btn-sm" style="color:#ff6a00; border-color:red">Təstiqlə</a>
+                <label style="color:#6b2727">  @HttpContext.Current.User.Identity.Name</label>
             </td>
-        }
-        @if (Model.CONFIRMATION == true)
-        {
+
+        </tr>
+        <tr>
+            <th>
+                <label style="font-weight: bolder; color:red">Ad: </label>
+            </th>
             <td>
-                <label style="color:#00ff21">  @HttpContext.Current.User.Identity.Name</label>
+                @Html.DisplayFor(x => x.NAME)
             </td>
-        }
-    </tr>
-    <tr>
-        <th>
-            <label style="font-weight: bolder; color:red">Ad: </label>
-        </th>
-        <td>
-            @Html.DisplayFor(x => x.NAME)
-        </td>
-    </tr>
-    <tr>
-        <th>
-            <label style="font-weight: bolder; color:red">Soyad: </label>
-        </th>
-        <td>
-            @Html.DisplayFor(x => x.SURNAME)
-        </td>
-    </tr>
-</table>
+        </tr>
+        <tr>
+            <th>
+                <label style="font-weight: bolder; color:red">Soyad: </label>
+            </th>
+            <td>
+                @Html.DisplayFor(x => x.SURNAME)
+            </td>
+        </tr>
+    </table>
     @using (Html.BeginForm("Index", "Panel", FormMethod.Post))
     {
 

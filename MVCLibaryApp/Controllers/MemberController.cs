@@ -59,6 +59,13 @@ namespace MVCLibaryApp.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult MemberHistory(int id)
+        {
+            var member = db.TBLMEMBERS.Where(x => x.ID == id).FirstOrDefault();
+            ViewBag.member = member.NAME + " " + member.SURNAME;
+            var memBookhis = db.TBLACTION.Where(x => x.MEMBER == id).ToList();
+            return View(memBookhis);
+        }
 
     }
 }

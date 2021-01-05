@@ -91,5 +91,12 @@ namespace MVCLibaryApp.Controllers
             return RedirectToAction("Index");
 
         }
+        public ActionResult WritersBook(int id)
+        {
+            var writer = db.TBLWRITER.Where(x => x.ID == id).FirstOrDefault();
+            ViewBag.writer = writer.NAME + " " + writer.SURNAME;
+            var writer_book = db.TBLBOOK.Where(x => x.WRITER == id).ToList();
+            return View(writer_book);
+        }
     }
 }

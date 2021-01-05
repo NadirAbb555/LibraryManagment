@@ -49,6 +49,8 @@ namespace MVCLibaryApp.Controllers
 
             if (m.RECEIVER == dbMail.MAIL)
             {
+                m.STSENDER = false;                
+                m.STRECEIVER = false;
                 m.READMSG = false;                
                 m.SENDER = inbox.ToString();
                 m.DATE = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));

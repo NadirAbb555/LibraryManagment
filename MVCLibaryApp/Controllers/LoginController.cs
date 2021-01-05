@@ -28,8 +28,8 @@ namespace MVCLibaryApp.Controllers
                 Session["mail"] = login.MAIL.ToString();
                 sess = login.MAIL.ToString();
                 //TempData["id"] = login.ID.ToString();
-                //TempData["ad"] = login.NAME.ToString();
-                //TempData["soyad"] = login.SURNAME.ToString();
+                Session["ad"] = login.NAME.ToString();
+                Session["soyad"] = login.SURNAME.ToString();
                 //TempData["sifre"] = login.PASSWORD.ToString();
                 //TempData["mobil"] = login.MOB.ToString();
                 //TempData["tehsil"] = login.SCHOOL.ToString();

@@ -15,6 +15,8 @@ namespace MVCLibaryApp.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            string adsoyad = TempData["ad"].ToString() + " " + TempData["soyad"].ToString();
+            ViewBag.AdSoyad = adsoyad;
             var member = (string)Session["mail"];
             var data = db.TBLMEMBERS.FirstOrDefault(x => x.MAIL == member);
             return View(data);
@@ -36,8 +38,18 @@ namespace MVCLibaryApp.Controllers
         public ActionResult ConfirmAccaunt(TBLMEMBERS m)
         {
             rc.BuildEmailTemplate(m.ID);
-            m.CONFIRMATION = true;
+            return RedirectToAction("Login","Login");
+        }
+        public ActionResult Books()
+        {
+            var member = (string)Session["mail"];
+            int id = db.TBLMEMBERS.Where(x => x.MAIL == member.ToString()).Select(z => z.ID).FirstOrDefault();
+            var action = db.TBLACTION.Where(m => m.MEMBER == id).ToList();
+            return View(action);
+        }
+        public ActionResult BaseLayout()
+        {
             return View();
         }
-    }
+        }
 }

@@ -24,12 +24,53 @@ namespace MVCLibaryApp.Controllers
         [HttpGet]
         public ActionResult DeliveryAdd()
         {
+            List<SelectListItem> book = (from x in db.TBLBOOK.Where(z=>z.BOOKSTATUS == true && z.SD == true).ToList()
+                                         select new SelectListItem
+                                         {
+                                             Text = x.NAME,
+                                             Value = x.ID.ToString()
+                                         }).ToList();
+            ViewBag.book = book;
+
+            List<SelectListItem> member = (from m in db.TBLMEMBERS.Where(z=>z.SD == true).ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = m.NAME + " " + m.SURNAME + "{"+ m.MAIL + "}",
+                                               Value = m.ID.ToString()
+                                           }).ToList();
+            ViewBag.member = member;
+
+            List<SelectListItem> personal = (from p in db.TBLPERSONAL.Where(z => z.SD == true).ToList()
+                                             select new SelectListItem
+                                             {
+                                                 Text = p.PERSONAL,
+                                                 Value = p.ID.ToString()
+                                             }).ToList();
+            ViewBag.personal = personal;
 
             return View();
         }
         [HttpPost]
         public ActionResult DeliveryAdd(TBLACTION a)
         {
+            var bk = db.TBLBOOK.Where(x => x.ID == a.TBLBOOK.ID).FirstOrDefault();
+            var mb = db.TBLMEMBERS.Where(x => x.ID == a.TBLMEMBERS.ID).FirstOrDefault();
+            var ps = db.TBLPERSONAL.Where(x => x.ID == a.TBLPERSONAL.ID).FirstOrDefault();
+
+            
+            if ( bk.BOOKSTATUS == false)
+            {
+                bk.BOOKSTATUS = false;
+                return RedirectPermanent("/Book/Index/");
+
+            }
+            a.TBLBOOK = bk;
+            a.TBLMEMBERS = mb;
+            a.TBLPERSONAL = ps;
+            a.SD = false;           
+            db.TBLACTION.Add(a);
+            db.SaveChanges();
+            return RedirectToAction("Index"); 
             //var book = db.TBLBOOK.Where(m => m.ID == a.BOOK).FirstOrDefault();
             //var member = db.TBLMEMBERS.Where(m => m.ID == a.MEMBER).FirstOrDefault();
             //var bId = db.TBLBOOK.Find(book.ID);
@@ -52,18 +93,6 @@ namespace MVCLibaryApp.Controllers
             //    bId.BOOKSTATUS = false;
             //}
             //bId.STOCK = Convert.ToInt32(resultStck);
-            var book = db.TBLBOOK.Where(m => m.ID == a.BOOK).FirstOrDefault();
-            var bId = db.TBLBOOK.Find(book.ID);
-            if ( bId.BOOKSTATUS == false)
-            {
-                bId.BOOKSTATUS = false;
-                return RedirectPermanent("/Book/Index/");
-
-            }
-            a.SD = false;           
-            db.TBLACTION.Add(a);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
         public ActionResult Return(TBLACTION a)
         {
